@@ -1,3 +1,8 @@
+let firstNumber
+let secondNumber
+let operator
+let result
+
 function add(a,b) {
     return a + b;
 };
@@ -12,4 +17,16 @@ function multiply(a,b) {
 
 function divide(a,b) {
     return a / b;
+};
+
+function operate(num1,op,num2) {
+    if (op === "+") {
+        result = add(num1,num2);
+    } else if (op === "-") {
+        result = subtract(num1,num2);
+    } else if (op === "*") {
+        result = multiply(num1,num2);
+    } else if (op === "/") {
+        result = divide(num1,num2);
+    };
 };
