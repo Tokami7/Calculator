@@ -73,7 +73,9 @@ function updateNumbers(num) {
 };
 
 function updateOperator(op) {
-    if (operator === undefined) {
+    if (firstNumber === undefined) {
+        
+    } else if (operator === undefined) {
         operator = op;
     } else {
         operate(firstNumber,operator,secondNumber);
@@ -105,6 +107,6 @@ equalsBtn.addEventListener("click", () => {
     } else {
     operate(firstNumber,operator,secondNumber);
     display.textContent = result;
-    firstNumber = secondNumber = operator = result = display.textContent = undefined;
+    firstNumber = secondNumber = operator = result = undefined;
     };
 });
