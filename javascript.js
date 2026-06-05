@@ -77,6 +77,8 @@ function updateOperator(op) {
         
     } else if (operator === undefined) {
         operator = op;
+    } else if (operator !== undefined && secondNumber === undefined) {
+        operator = op;
     } else {
         operate(firstNumber,operator,secondNumber);
         display.textContent = result;
