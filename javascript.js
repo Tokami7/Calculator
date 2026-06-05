@@ -35,7 +35,12 @@ function multiply(a,b) {
 };
 
 function divide(a,b) {
-    return Math.round((a / b) * 100000000)/100000000;
+    if (b === 0) {
+        alert("Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See, it doesn't make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends.");
+        firstNumber = secondNumber = operator = result = display.textContent = undefined;
+    } else {
+        return Math.round((a / b) * 100000000)/100000000;
+    }
 };
 
 function operate(num1,op,num2) {
