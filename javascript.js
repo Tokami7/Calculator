@@ -95,6 +95,10 @@ subtractBtn.addEventListener("click", () => {updateOperator("-")});
 multiplyBtn.addEventListener("click", () => {updateOperator("*")});
 divideBtn.addEventListener("click", () => {updateOperator("/")});
 equalsBtn.addEventListener("click", () => {
+    if (firstNumber === undefined || secondNumber === undefined || operator === undefined) {
+
+    } else {
     operate(firstNumber,operator,secondNumber);
     display.textContent = result;
+    };
 });
