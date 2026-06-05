@@ -105,5 +105,6 @@ equalsBtn.addEventListener("click", () => {
     } else {
     operate(firstNumber,operator,secondNumber);
     display.textContent = result;
+    firstNumber = secondNumber = operator = result = display.textContent = undefined;
     };
 });
