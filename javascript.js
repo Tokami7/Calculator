@@ -4,6 +4,7 @@ let operator = "";
 let result = "";
 
 const display = document.querySelector(".display");
+const allClearBtn = document.querySelector(".all-clear");
 const clearBtn = document.querySelector(".clear");
 const zeroBtn = document.querySelector(".zero");
 const oneBtn = document.querySelector(".one");
@@ -40,7 +41,7 @@ function divide(a,b) {
         firstNumber = secondNumber = operator = result = display.textContent = undefined;
     } else {
         return Math.round((Number(a) / Number(b)) * 100000000)/100000000;
-    }
+    };
 };
 
 function operate(num1,op,num2) {
@@ -98,7 +99,20 @@ sixBtn.addEventListener("click", () => {updateNumbers(6)});
 sevenBtn.addEventListener("click", () => {updateNumbers(7)});
 eightBtn.addEventListener("click", () => {updateNumbers(8)});
 nineBtn.addEventListener("click",  () => {updateNumbers(9)});
-clearBtn.addEventListener("click", () => firstNumber = secondNumber = operator = result = display.textContent = "");
+allClearBtn.addEventListener("click", () => firstNumber = secondNumber = operator = result = display.textContent = "");
+clearBtn.addEventListener("click", () => {
+    if (firstNumber === "" && secondNumber === "") {
+        
+    } else if (operator !== "" && secondNumber === ""){
+        
+    } else if (secondNumber === "") {
+        firstNumber = firstNumber.slice(0, -1);
+        display.textContent = firstNumber;
+    } else {
+        secondNumber = secondNumber.slice(0, -1);
+        display.textContent = secondNumber;
+    };
+});
 addBtn.addEventListener("click", () => {updateOperator("+")});
 subtractBtn.addEventListener("click", () => {updateOperator("-")});
 multiplyBtn.addEventListener("click", () => {updateOperator("*")});
