@@ -1,7 +1,7 @@
-let firstNumber
-let secondNumber
-let operator
-let result
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
+let result = "";
 
 const display = document.querySelector(".display");
 const clearBtn = document.querySelector(".clear");
@@ -23,23 +23,23 @@ const multiplyBtn = document.querySelector(".multiply");
 const divideBtn = document.querySelector(".divide");
 
 function add(a,b) {
-    return Math.round((a + b) * 100000000)/100000000;
+    return Math.round((Number(a) + Number(b)) * 100000000)/100000000;
 };
 
 function subtract(a,b) {
-    return Math.round((a - b) * 100000000)/100000000;
+    return Math.round((Number(a) - Number(b)) * 100000000)/100000000;
 };
 
 function multiply(a,b) {
-    return Math.round((a * b) * 100000000)/100000000;
+    return Math.round((Number(a) * Number(b)) * 100000000)/100000000;
 };
 
 function divide(a,b) {
-    if (b === 0) {
+    if (Number(b) === 0) {
         alert("Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See, it doesn't make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends.");
         firstNumber = secondNumber = operator = result = display.textContent = undefined;
     } else {
-        return Math.round((a / b) * 100000000)/100000000;
+        return Math.round((Number(a) / Number(b)) * 100000000)/100000000;
     }
 };
 
@@ -56,34 +56,34 @@ function operate(num1,op,num2) {
 };
 
 function updateNumbers(num) {
-    if (firstNumber === undefined) {
-        firstNumber = num;
+    if (firstNumber === "") {
+        firstNumber += num;
         display.textContent = firstNumber;
-    } else if (firstNumber !== undefined && operator === undefined){
-        firstNumber = Number("" + firstNumber + num);
+    } else if (firstNumber !== "" && operator === ""){
+        firstNumber += num;
         display.textContent = firstNumber;
-    } else if (secondNumber === undefined) {
-        secondNumber = num;
+    } else if (secondNumber === "") {
+        secondNumber += num;
         display.textContent = secondNumber;
     } else {
-        secondNumber = Number("" + secondNumber + num);
+        secondNumber += num;
         display.textContent = secondNumber;
     };
 
 };
 
 function updateOperator(op) {
-    if (firstNumber === undefined) {
+    if (firstNumber === "") {
         
-    } else if (operator === undefined) {
+    } else if (operator === "") {
         operator = op;
-    } else if (operator !== undefined && secondNumber === undefined) {
+    } else if (operator !== "" && secondNumber === "") {
         operator = op;
     } else {
         operate(firstNumber,operator,secondNumber);
         display.textContent = result;
-        firstNumber = result;
-        secondNumber = undefined;
+        firstNumber = result.toString();
+        secondNumber = "";
         operator = op;
     };
 }
@@ -98,17 +98,36 @@ sixBtn.addEventListener("click", () => {updateNumbers(6)});
 sevenBtn.addEventListener("click", () => {updateNumbers(7)});
 eightBtn.addEventListener("click", () => {updateNumbers(8)});
 nineBtn.addEventListener("click",  () => {updateNumbers(9)});
-clearBtn.addEventListener("click", () => firstNumber = secondNumber = operator = result = display.textContent = undefined);
+clearBtn.addEventListener("click", () => firstNumber = secondNumber = operator = result = display.textContent = "");
 addBtn.addEventListener("click", () => {updateOperator("+")});
 subtractBtn.addEventListener("click", () => {updateOperator("-")});
 multiplyBtn.addEventListener("click", () => {updateOperator("*")});
 divideBtn.addEventListener("click", () => {updateOperator("/")});
 equalsBtn.addEventListener("click", () => {
-    if (firstNumber === undefined || secondNumber === undefined || operator === undefined) {
+    if (firstNumber === "" || secondNumber === "" || operator === "") {
 
     } else {
     operate(firstNumber,operator,secondNumber);
     display.textContent = result;
-    firstNumber = secondNumber = operator = result = undefined;
+    firstNumber = secondNumber = operator = result = "";
+    };
+});
+pointBtn.addEventListener("click", () => {
+    if (firstNumber === "" && operator === "" && secondNumber === "") {
+        firstNumber = "0.";
+        display.textContent = firstNumber;
+    } else if (firstNumber.includes(".") && operator === "" && secondNumber === "") {
+
+    } else if (operator === "" && secondNumber === "") {
+        firstNumber += ".";
+        display.textContent = firstNumber;
+    } else if (secondNumber === "") {
+        secondNumber = "0.";
+        display.textContent = secondNumber;
+    } else if (secondNumber.includes(".")) {
+
+    } else if (secondNumber !== "") {
+        secondNumber += ".";
+        display.textContent = secondNumber;
     };
 });
