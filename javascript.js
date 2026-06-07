@@ -78,11 +78,13 @@ function updateOperator(op) {
         
     } else if (operator === "") {
         operator = op;
+        display.textContent += ` ${op}`;
     } else if (operator !== "" && secondNumber === "") {
         operator = op;
+        display.textContent += ` ${op}`;
     } else {
         operate(firstNumber,operator,secondNumber);
-        display.textContent = result;
+        display.textContent = result + ` ${op}`;
         firstNumber = result.toString();
         secondNumber = "";
         operator = op;
